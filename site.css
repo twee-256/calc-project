@@ -18,13 +18,14 @@ body {
     gap: 7px;
 }
 
-.calculator-grid div,
-.calc-display div:not(.display) {
+.calculator-grid button,
+.calc-display button:not(.display) {
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid;
     border-radius: 10px;
+    background-color: white;
 }
 
 .display {

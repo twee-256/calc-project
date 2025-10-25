@@ -15,28 +15,79 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
-    // operator = '';
+    a = Number(a);
+    b = Number(b);
     switch (operator) {
         case '+':
-            add(a, b);
-            console.log(add(a, b));
-            break;
+            return add(a, b);
 
         case '-':
-            subtract(a, b);
-            console.log(subtract(a, b))
-            break;
+            return subtract(a, b);
 
         case '*':
-            multiply(a, b);
-            console.log(multiply(a, b))
-            break;
+            return multiply(a, b);
 
         case '/':
-            divide(a, b);
-            console.log(divide(a, b))
-            break;
+            return divide(a, b);
+
     }
 }
 
 let display = document.querySelector('.display');
+let num1 = '';
+let num2 = '';
+let operand = '';
+let result = '';
+let signs = ['+', '-', '*', '/'];
+
+function calc() {
+    let digits = document.querySelectorAll('.digit');
+
+    digits.forEach(digit => {
+        digit.addEventListener('click', event => {
+            const value = digit.value;
+            let expr = display.textContent;
+            if (value !== '=') {
+                display.textContent += value;
+            }
+            if (value === '=') {
+                for (let sign of signs) {
+                    if (expr.includes(sign)) {
+                        const array = expr.split(sign);
+                        num1 = array[0];
+                        num2 = array[1];
+                        if (num1 != '' && num2 != '') {
+                            result = operate(sign, num1, num2);
+                            display.textContent = result;
+                        }
+                        return result;
+                    }
+                }
+            } else if (signs.includes(value)) {
+                for (let sign of signs) {
+                    if (expr.includes(sign)) {
+                        const array = expr.split(sign);
+                        num1 = array[0];
+                        num2 = array[1];
+                        if (num1 != '' && num2 != '') {
+                            result = operate(sign, num1, num2);
+                            display.textContent = result + value;
+                        }
+                        return;
+                    }
+                }
+            }
+        });
+    });
+}
+
+function clear() {
+    let clear = document.querySelector('.clear');
+    clear.addEventListener('click', event => {
+        display.textContent = '';
+    })
+}
+
+calc();
+// console.log(calc('2+2'));
+clear();
