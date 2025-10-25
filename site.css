@@ -11,14 +11,21 @@ body {
     gap: 3px;
 }
 
-.calc-display {
-    display: inline-grid;
-    grid-template-columns: 150px 50px;
+.calc-clear {
+    display: grid;
+    grid-template-columns: 103px 103px;
     grid-template-rows: 50px;
-    gap: 7px;
+    gap: 3px;
+}
+
+.calc-display {
+    display: grid;
+    grid-template-columns: 209px;
+    grid-template-rows: 50px;
 }
 
 .calculator-grid button,
+.calc-clear button,
 .calc-display button:not(.display) {
     display: flex;
     justify-content: center;

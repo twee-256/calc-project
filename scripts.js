@@ -48,6 +48,9 @@ function calc() {
             const value = digit.value;
             let expr = display.textContent;
             if (value !== '=') {
+                if (display.textContent == '0') {
+                    display.textContent = '';
+                }
                 display.textContent += value;
             }
             if (value === '=') {
@@ -60,7 +63,7 @@ function calc() {
                             result = operate(sign, num1, num2);
                             display.textContent = result;
                         }
-                        return result;
+                        return;
                     }
                 }
             } else if (signs.includes(value)) {
@@ -81,6 +84,13 @@ function calc() {
     });
 }
 
+function backspace() {
+    let bkSpace = document.querySelector('.bkSpace');
+    bkSpace.addEventListener('click', event => {
+        display.textContent = display.textContent.slice(0, -1);
+    })
+}
+
 function clear() {
     let clear = document.querySelector('.clear');
     clear.addEventListener('click', event => {
@@ -88,6 +98,6 @@ function clear() {
     })
 }
 
+backspace();
 calc();
-// console.log(calc('2+2'));
 clear();
