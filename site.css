@@ -5,7 +5,7 @@ body {
 
 @font-face {
     font-family: 'PixelifySans';
-    src: url('fonts/PixelifySans-VariableFont_wght.ttf');
+    src: url('./fonts/PixelifySans-VariableFont_wght.ttf');
     font-weight: 100 1000;
     font-style: normal;
 }
