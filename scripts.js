@@ -1,3 +1,4 @@
+// Equations
 function add(a, b) {
     return a + b;
 }
@@ -44,7 +45,6 @@ let result = '';
 let signs = ['+', '-', '×', '÷'];
 
 let digits = document.querySelectorAll('.digit');
-
 digits.forEach(digit => {
     digit.addEventListener('click', event => {
         const value = digit.value;
@@ -52,6 +52,7 @@ digits.forEach(digit => {
     });
 });
 
+// Keyboard support events
 document.addEventListener("keydown", event => {
     let key = event.key;
     if (/\d/.test(key) || /[+-.]/.test(key)) {
@@ -70,13 +71,14 @@ document.addEventListener("keydown", event => {
         calc('=');
     }
     if (key === 'Backspace') {
-        console.log("hi");
         document.querySelector('.bkSpace').click();
     }
 })
 
+// Main calc function
 function calc(value) {
     let expr = display.textContent;
+
     if (value != '=') {
         if (!signs.includes(value)) {
             if (display.textContent == '0') {
@@ -87,16 +89,16 @@ function calc(value) {
             }
         }
     }
+
     if (value == '.' && expr.slice(-1) != value) {
         if (signs.includes(expr.slice(-1))) {
-            console.log(expr.slice(-1));
             display.textContent += '0';
             display.textContent += value;
         } else {
             display.textContent += value;
         }
-        // console.log(expr.slice(-1));
     }
+
     if (value == '=') {
         for (let sign of signs) {
             if (expr.includes(sign)) {
@@ -120,6 +122,7 @@ function calc(value) {
                 display.textContent = result + value;
             }
         }
+
         if (!expr.includes(value)) {
             for (let sign of signs) {
                 if (expr.includes(sign)) {
@@ -160,22 +163,4 @@ function clear() {
 }
 
 backspace();
-// document.addEventListener('keydown', (e) => {
-//     console.log('Key is down:', e.key);
-// });
-// let digits = document.querySelectorAll('.digit');
-// digits.forEach(digit => {
-//     document.addEventListener("keydown", event => {
-//         if (/\d/.test(event.key) == digit) {
-//             console.log('Numeber is:', digit);
-//         }
-//     })
-
-// })
-// document.addEventListener("keydown", event => {
-//     if (/\d/.test(event.key)) {
-//         console.log('Numeber is:', event.key);
-//     }
-// })
-// calc();
 clear();
