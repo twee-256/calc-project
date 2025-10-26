@@ -66,6 +66,13 @@ document.addEventListener("keydown", event => {
     if (mapped) {
         calc(mapped);
     }
+    if (key === 'Enter') {
+        calc('=');
+    }
+    if (key === 'Backspace') {
+        console.log("hi");
+        document.querySelector('.bkSpace').click();
+    }
 })
 
 function calc(value) {
