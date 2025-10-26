@@ -76,7 +76,7 @@ main {
     padding: 0.5rem;
     border: 1px solid;
     border-radius: 10px;
-    background-color: w;
+    overflow-x: hidden;
 }
 
 .sign {

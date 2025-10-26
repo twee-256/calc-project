@@ -79,14 +79,13 @@ document.addEventListener("keydown", event => {
 function calc(value) {
     let expr = display.textContent;
 
-    if (value != '=') {
+    if (value != '=' && value != '.') {
         if (!signs.includes(value)) {
             if (display.textContent == '0') {
                 display.textContent = '';
             }
-            if (value != '.') {
-                display.textContent += value;
-            }
+            display.textContent += value;
+
         }
     }
 
